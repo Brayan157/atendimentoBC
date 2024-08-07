@@ -9,8 +9,4 @@ data class Cliente(
     val tipoAtendimento: TipoAtendimento,
     val senha: String,
     val horaChegada: LocalDateTime = LocalDateTime.now()
-) {
-    fun atendimentoConcluido(): Boolean {
-        return false // TODO Sempre falso?
-    }
-}
+)
