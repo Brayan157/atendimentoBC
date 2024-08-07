@@ -2,7 +2,6 @@ package com.example.atendimento.controller
 
 
 import com.example.atendimento.controller.request.CriarClienteRequest
-import com.example.atendimento.enum.TipoAtendimento
 import com.example.atendimento.model.Atendimento
 import com.example.atendimento.model.Cliente
 import com.example.atendimento.service.AtendimentoService
@@ -19,12 +18,12 @@ class AtendimentoController(private val atendimentoService: AtendimentoService) 
     }
 
     @GetMapping("/fila")
-    fun getFilaAtendimento(): List<Atendimento> {
+    fun getFilaClientes(): List<Cliente> {
         return atendimentoService.getFilaDeAtendimentosRestantes()
     }
 
     @GetMapping("/fila/encerrados")
-    fun getFilaAtendimentosEncerrados(): List<Atendimento> {
+    fun getListaAtendimentosEncerrados(): List<Atendimento> {
         return atendimentoService.getFilaDeAtendimentosConcluidos()
     }
 
@@ -38,9 +37,9 @@ class AtendimentoController(private val atendimentoService: AtendimentoService) 
         return atendimentoService.calcularTempoEspera(senha)
     }
 
-    @PutMapping("/{id}/iniciar")
-    fun iniciarAtendimento(@PathVariable id: Long): Atendimento {
-        return atendimentoService.iniciarAtendimento(id)
+    @PutMapping("/iniciar")
+    fun iniciarAtendimento(): Atendimento {
+        return atendimentoService.iniciarAtendimento()
     }
 
     @PutMapping("/{id}/finalizar")
